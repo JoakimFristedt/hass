@@ -1,0 +1,31 @@
+kitchen_listen_to_music: 
+  sequence:
+    - service: spotcast.start
+      data:
+        entity_id: media_player.kitchen
+    - service: media_player.media_play
+      entity_id: media_player.kitchen
+
+bathroom_listen_to_music: 
+  sequence:
+    - service: media_player.media_play
+      entity_id: media_player.bathroom
+
+living_room_listen_to_music:
+  sequence:
+    - service: remote.turn_on
+      data:
+        activity: 'Listen to Music'
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.spotify
+        source: Living-room
+    - service: media_player.media_play
+      data:
+        entity_id: media_player.spotify
+
+living_room_watch_apple_tv:
+  sequence:
+    - service: remote.turn_on
+      data:
+        activity: 'Watch Apple TV'

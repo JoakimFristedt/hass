@@ -1,0 +1,23 @@
+kitchen:
+  name: Kitchen
+  entities:
+    - light.kitchen
+    - media_player.kitchen
+    - sensor.kitchen
+
+bathroom:
+  name: Bathroom
+  entities:
+    - media_player.bathroom
+
+bedroom:
+  name: Bedroom
+  entities:
+    - light.bedroom
+
+living_room:
+  name: Living room
+  entities:
+    - light.living_room
+
+

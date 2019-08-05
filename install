@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+home_assistant_config_dir="/usr/share/hassio/homeassistant"
+
+#TODO: symlink doesn't seem to work with docker?
+#ln -fs $DIR/* $home_assistant_config_dir
+# workaround for now...
+
+cp -r $DIR/* $home_assistant_config_dir
+

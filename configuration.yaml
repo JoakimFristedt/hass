@@ -1,0 +1,66 @@
+homeassistant:
+  auth_providers: 
+   - type: homeassistant
+   #- type: legacy_api_password
+  name: !secret name
+  temperature_unit: C
+  time_zone: !secret timezone
+  latitude: !secret latitude
+  longitude: !secret longitude
+  unit_system: metric
+  elevation: 0
+  customize: !include customize.yaml
+
+frontend:
+  themes: !include themes.yaml
+
+lovelace: 
+  mode: yaml
+
+config:
+
+zone: !include zones.yaml
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+
+updater:
+discovery:
+hassio:
+conversation:
+history:
+logbook:
+logger:
+  default: info
+map:
+sun:
+
+tts:
+  - platform: google_translate
+
+remote: !include remotes.yaml
+group: !include groups.yaml
+automation: !include_dir_merge_list automations
+script: !include scripts.yaml
+
+hue:
+  bridges:
+    - host: 192.168.1.60
+
+sensor:
+  - platform: huesensor
+  - platform: spotcast
+
+spotcast:
+  username: !secret spotify_username
+  password: !secret spotify_password
+
+media_player: 
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_secret

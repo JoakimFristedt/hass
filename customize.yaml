@@ -1,0 +1,12 @@
+script.kitchen_listen_to_music:
+  icon: mdi:music
+
+script.bathroom_listen_to_music:
+  icon: mdi:music
+
+script.living_room_listen_to_music:
+  icon: mdi:music
+
+script.living_room_watch_apple_tv:
+  icon: mdi:television
+

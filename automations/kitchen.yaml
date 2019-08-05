@@ -1,0 +1,72 @@
+- alias: "Turn on music in kitchen"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '1_click_up'
+  action:
+    - service: script.kitchen_listen_to_music
+
+- alias: "Turn off music in kitchen"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '4_click_up'
+  action:
+    service: media_player.media_stop
+    entity_id: media_player.kitchen
+
+- alias: "Next song kitchen"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '1_hold'
+  action:
+    service: media_player.media_next_track
+    entity_id: media_player.kitchen
+
+- alias: "Volume up kitchen"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '2_hold'
+  action:
+    service: media_player.volume_up
+    entity_id: media_player.kitchen
+
+- alias: "Volume down kitchen"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '3_hold'
+  action:
+    service: media_player.volume_down
+    entity_id: media_player.kitchen
+
+- alias: "Previous song kitchen"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '4_hold'
+  action:
+    service: media_player.media_previous_track
+    entity_id: media_player.kitchen
+
+- alias: "Turn on light kitchen"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '2_click_up'
+  action:
+    service: light.turn_on
+    data:
+      entity_id: light.kitchen
+
+- alias: "Turn on light kitchen"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '3_click_up'
+  action:
+    service: light.turn_off
+    data:
+      entity_id: light.kitchen

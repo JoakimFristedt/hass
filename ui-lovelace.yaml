@@ -1,0 +1,86 @@
+title: Home
+views:
+  - title: Overview
+    cards:
+      - type: entities
+        title: Kitchen
+        show_header_toggle: false
+        entities:
+          - entity: light.kitchen
+            name: Lights
+          - entity: script.kitchen_listen_to_music
+            name: Listen to music
+
+      - type: entities
+        title: Bathroom
+        show_header_toggle: false
+        entities:
+          - entity: script.bathroom_listen_to_music
+            name: Listen to music
+
+      - type: entities
+        title: Bedroom
+        show_header_toggle: false
+        entities:
+          - entity: light.bedroom
+            name: Lights
+
+      - type: entities
+        title: Living room
+        show_header_toggle: false
+        entities:
+          - entity: light.living_room
+            name: Lights
+          - entity: script.living_room_listen_to_music
+            name: Listen to music
+          - entity: script.living_room_watch_apple_tv
+            name: Watch Apple TV
+
+  - title: Lights
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: light
+            entity: light.kitchen
+          - type: light
+            entity: light.bedroom
+          - type: light
+            entity: light.living_room
+
+  - title: Music
+    cards:
+      - type: media-control
+        title: Spotify
+        entity: media_player.spotify
+        show_header_toggle: false
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            name: Kitchen
+            icon: mdi:music
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.kitchen_listen_to_music
+            entity: script.kitchen_listen_to_music
+
+          - type: entity-button
+            name: Bathroom
+            icon: mdi:music
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.bathroom_listen_to_music
+            entity: script.bathroom_listen_to_music
+
+          - type: entity-button
+            name: Living room
+            icon: mdi:music
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.living_room_listen_to_music
+            entity: script.living_room_listen_to_music
