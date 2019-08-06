@@ -1,0 +1,53 @@
+- alias: "Turn on music in bathroom"
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom
+    to: '1_click_up'
+  action:
+    service: media_player.media_play
+    entity_id: media_player.bathroom
+
+- alias: "Turn off music in bathroom"
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom
+    to: '4_click_up'
+  action:
+    service: media_player.media_stop
+    entity_id: media_player.bathroom
+
+- alias: "Next song bathroom"
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom
+    to: '1_hold'
+  action:
+    service: media_player.media_next_track
+    entity_id: media_player.bathroom
+
+- alias: "Previous song bathroom"
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom
+    to: '4_hold'
+  action:
+    service: media_player.media_previous_track
+    entity_id: media_player.bathroom
+
+- alias: "Volume up bathroom"
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom
+    to: '2_hold'
+  action:
+    service: media_player.volume_up
+    entity_id: media_player.bathroom
+
+- alias: "Volume down bathroom"
+  trigger:
+    platform: state
+    entity_id: sensor.bathroom
+    to: '3_hold'
+  action:
+    service: media_player.volume_down
+    entity_id: media_player.bathroom
