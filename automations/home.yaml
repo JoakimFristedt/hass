@@ -1,0 +1,7 @@
+- alias: "Turn on music"
+  trigger:
+    platform: state
+    entity_id: sensor.kitchen
+    to: '1_click_up'
+  action:
+    - service: script.kitchen_listen_to_music

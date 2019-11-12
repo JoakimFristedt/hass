@@ -3,6 +3,31 @@ views:
   - title: Overview
     cards:
       - type: entities
+        title: Home
+        show_header_toggle: false
+        entities:
+          - entity: script.home_listen_to_music
+            name: Listen to music
+          - entity: script.home_chill_mode
+            name: Chill
+          - entity: script.home_bright_mode
+            name: Bright
+          - entity: script.home_party_mode
+            name: Party
+          - entity: script.home_goodnight_mode
+            name: Goodnight
+          - entity: script.home_sleep_mode
+            name: Sleep
+          - entity: script.home_good_morning_mode
+            name: Good morning
+          - entity: script.home_shower_after_gym_mode
+            name: Shower after gym
+          - entity: script.home_breakfast_in_kitchen_mode
+            name: Breakfast in kitchen
+          - entity: script.turn_everything_off
+            name: Leave home
+
+      - type: entities
         title: Kitchen
         show_header_toggle: false
         entities:
@@ -24,6 +49,10 @@ views:
         entities:
           - entity: light.bedroom
             name: Lights
+          - entity: script.bedroom_listen_to_music
+            name: Listen to music
+          - entity: script.music_mood_jimi_hendrix
+            name: Jimi Hendrix mood
 
       - type: entities
         title: Living room
@@ -33,8 +62,8 @@ views:
             name: Lights
           - entity: script.living_room_listen_to_music
             name: Listen to music
-          - entity: script.living_room_watch_apple_tv
-            name: Watch Apple TV
+          - entity: script.living_room_watch_tv
+            name: Watch TV
 
   - title: Lights
     cards:
@@ -49,12 +78,38 @@ views:
 
   - title: Music
     cards:
+      - type: entities
+        title: Moods
+        show_header_toggle: false
+        entities:
+          - entity: script.music_mood_generate
+            name: Generate
+          - entity: script.music_mood_carola
+            name: Säg mig var du står
+          - entity: script.music_mood_party
+            name: Party
+          - entity: script.music_mood_monday
+            name: Monday
+          - entity: script.music_mood_jimi_hendrix
+            name: Jimi Hendrix
+
+
       - type: media-control
         title: Spotify
         entity: media_player.spotify
         show_header_toggle: false
       - type: horizontal-stack
         cards:
+          - type: entity-button
+            name: Home
+            icon: mdi:music
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.home_listen_to_music
+            entity: script.home_listen_to_music
+
           - type: entity-button
             name: Kitchen
             icon: mdi:music
@@ -74,6 +129,16 @@ views:
               service_data:
                 entity_id: script.bathroom_listen_to_music
             entity: script.bathroom_listen_to_music
+
+          - type: entity-button
+            name: Bedroom
+            icon: mdi:music
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.bedroom_listen_to_music
+            entity: script.bedroom_listen_to_music
 
           - type: entity-button
             name: Living room

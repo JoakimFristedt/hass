@@ -8,5 +8,13 @@ home_assistant_config_dir="/usr/share/hassio/homeassistant"
 #ln -fs $DIR/* $home_assistant_config_dir
 # workaround for now...
 
-cp -r $DIR/* $home_assistant_config_dir
+cp -rf $DIR/* $home_assistant_config_dir
 
+HOME_ASSISTANT_DIR=/usr/share/hassio/homeassistant
+
+if [[ ! -d addons ]]; then
+  git clone https://github.com/robmarkcole/Hue-sensors-HASS.git addons/huesensor
+  git clone https://github.com/fondberg/spotcast.git addons/spotcast
+  sudo mkdir -p $HOME_ASSISTANT_DIR/custom_components
+  sudo cp -r addons/*/custom_components/* $HOME_ASSISTANT_DIR/custom_components
+fi

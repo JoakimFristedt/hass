@@ -1,7 +1,11 @@
 homeassistant:
-  auth_providers: 
-   - type: homeassistant
-   #- type: legacy_api_password
+  #  auth_providers: 
+  #   - type: homeassistant
+  #     - type: legacy_api_password
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.0/24
   name: !secret name
   temperature_unit: C
   time_zone: !secret timezone
@@ -50,7 +54,8 @@ script: !include scripts.yaml
 
 hue:
   bridges:
-    - host: 192.168.1.60
+    - host: 192.168.1.58
+      allow_hue_groups: true
 
 sensor:
   - platform: huesensor
@@ -60,7 +65,7 @@ spotcast:
   username: !secret spotify_username
   password: !secret spotify_password
 
-media_player: 
+media_player:
   - platform: spotify
     client_id: !secret spotify_client_id
     client_secret: !secret spotify_client_secret
